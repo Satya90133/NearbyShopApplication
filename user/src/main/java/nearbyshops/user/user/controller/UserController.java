@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.client.RestTemplate;
 
-import java.security.Principal;
 import java.util.List;
 
 @Controller
@@ -22,12 +21,9 @@ public class UserController {
     @Autowired
     UserService userService;
 
-
     @Autowired
     RestTemplate restTemplate;
-
-
-
+    
     @GetMapping("/")
     public String getIndex(@RequestParam(name="lat",required = false) Double lat, @RequestParam(name="lon",required = false) Double lon, Model model) {
 
@@ -39,11 +35,7 @@ public class UserController {
         listNearbyShops(lat,lon,model);
         listPreferredShops(model);
         return "index";
-
     }
-
-
-
 
     @GetMapping("/nearbyShops")
     public String listNearbyShops(Double lat,Double lon,Model model){
@@ -55,10 +47,6 @@ public class UserController {
         // eliminating preferred and disliked shops
         shops = userService.filterUserNearbyShops(user,shops);
         //TODO:// the list of shops to display
-        //TODO:// the model which will be sent by the form to add a new preferred/disliked shop
         return null;
     }
-
-
-
 }

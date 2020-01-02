@@ -32,8 +32,7 @@ public class UserController {
             return "index"
         }
 
-        listNearbyShops(lat,lon,model);
-        listPreferredShops(model);
+        listNearbyShops(lat,lon,model);  //TODO:need to create method
         return "index";
     }
 
